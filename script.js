@@ -30,7 +30,7 @@ function evaluateExpression(expr) {
         "/": (a, b) => a / b,
     }
     const answer = operations.reduce(
-        (ans, operation) => opMap[operation.operator](ans, operation.number),
+        (ans, op) => opMap[op.operator](ans, op.number),
         numbers[0]
     );
     return (Math.round(answer*1e5)/1e5).toString();
