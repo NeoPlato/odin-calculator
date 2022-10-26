@@ -2,7 +2,6 @@
 
 body {
     font-family: Amiko, Arial, Helvetica, sans-serif;
-    font-weight: 700;
 }
 
 .calculator {
@@ -25,19 +24,22 @@ body {
 }
     
 .screen {
-    background-color: #666c77; 
+    background-color: #88cd94; 
     grid-row-start: 1;
     grid-column-start: 1;
     grid-row-end: 2;
     grid-column-end: 5;
-    
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    justify-content: start;
-    gap: 10px;
-    padding: 5px;
-    min-height: 65px;
+    justify-content: space-between;
+    min-height: 76px;
+    font-weight: 500;
+}
+
+.screen > * {
+    display: flex;
+    justify-content: end;
 }
 
 .screen #seen {
@@ -46,12 +48,19 @@ body {
 
 .screen #output {
     min-height: 30px;
+    font-weight: 700;
 }
 
 .button {
-    background-color: blueviolet;
+    background-color: #bebebe;
     width: 85px;
     height: 75px;
+    font-family: inherit;
+    color: #393939;
+}
+
+.button.operation {
+    background-color: #acbea1;
 }
 
 .button:active {
@@ -59,8 +68,27 @@ body {
     transition: 0.1s ease-in;
 }
 
-.button#zero {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    width: initial;
+.button#round {
+    font-weight: 700;
+    color: #333333;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.fa-github {
+    color: black;
+    font-size: 24px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.fa-github::before {
+    content: "\f09b";
+}
+
+.fa-github:hover {
+    transform: rotate(360deg) scale(1.2);
 }

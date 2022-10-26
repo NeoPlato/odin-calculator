@@ -6,26 +6,34 @@ let units = document.querySelectorAll(".button.unit");
 const clear = document.querySelector(".button#clear");
 const percentage = document.querySelector(".button#percentage");
 const sign = document.querySelector(".button#sign");
+const round = document.querySelector(".button#round");
+let decimal = document.querySelector(".button#decimal");
 
 
 function updateExpression() {
     expression += this.textContent;
     seen.textContent = expression;
     output.textContent = evaluateExpression(expression);
+    if (this.textContent === ".") {
+        decimal.removeEventListener("click", updateExpression);
+    }
+    if ("+-/*".includes(this.textContent)) {
+        decimal.addEventListener("click", updateExpression);
+    }
 }
 
 function evaluateExpression(expr) {
     let sign = 1;
-    if (["+", "-"].some(key => key === expr.at(0))) {
+    if ("+-".includes(expr.charAt(0))) {
         sign = +(expr[0] + "1")
         expr = expr.substr(1);
     }
-    let numbers = expr.match(/\d+(\.\d{1,5})?/g)
+    let numbers = expr.match(/\d+(\.\d{1,20})?/g)
     numbers = numbers ? numbers.map(num => +num) : [];
-    const operators = expr.match(/[\/+\*-]{1}/g);
+    const operators = expr.match(/[\/+\*-]/g);
     if (expr.length === 0) return "";
     if (numbers.length === 1) return numbers[0] * sign;
-    if (operators.length + 1 !== numbers.length) return "";
+    if (!numbers && !operators && operators.length + 1 !== numbers.length) return "";
     numbers[0] *= sign;
     const operations = numbers.slice(1).map((num, i) => {
         return {
@@ -43,6 +51,7 @@ function evaluateExpression(expr) {
         (ans, op) => opMap[op.operator](ans, op.number),
         numbers[0]
     );
+    if (answer == Infinity) return "Zero Division Error";
     return (Math.round(answer*1e5)/1e5).toString();
 }
 
@@ -59,9 +68,8 @@ function keyOperate(event) {
         expression = output.textContent;
         return;
     }
-    let safeKeys = ["+", "-", "*", "/", "."];
-    for (let i=0; i<=9; i++) safeKeys.push(i.toString());
-    if (safeKeys.some(key => key === event.key)) {
+    let safeKeys = "+-/*0123456789";
+    if (safeKeys.includes(event.key)) {
         expression += event.key;
         seen.textContent = expression;
         output.textContent = evaluateExpression(expression);
@@ -84,6 +92,12 @@ function evaluatePercentage() {
 function changeSign() {
     if (seen.textContent.length > 0) return;
     expression = (-expression).toString();
+    output.textContent = expression;
+}
+
+function roundingOff() {
+    if (seen.textContent.length > 0) return;
+    expression = (Math.round(expression)).toString();
     output.textContent = expression;
 }
 
