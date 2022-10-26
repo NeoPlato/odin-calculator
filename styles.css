@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Amiko');
+@import url('https://fonts.googleapis.com/css?family=Fira+Code');
 
 body {
     font-family: Amiko, Arial, Helvetica, sans-serif;
@@ -15,6 +16,7 @@ body {
     border-radius: 30px;
     background-color: #c7b298;
     margin: 0 auto;
+    font-family: "Fira Code", Arial, Helvetica, sans-serif;
 }
 
 .calculator > * {
@@ -77,18 +79,15 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 10px;
+    gap: 10px;
 }
 
-.fa-github {
-    color: black;
+.footer svg {
+    color: #414141;
     font-size: 24px;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.5s ease-in-out;
 }
 
-.fa-github::before {
-    content: "\f09b";
-}
-
-.fa-github:hover {
-    transform: rotate(360deg) scale(1.2);
+.footer svg:hover {
+    transform: rotate(1080deg) scale(1.2);
 }
