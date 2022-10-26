@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Amiko');
+
+body {
+    font-family: Amiko, Arial, Helvetica, sans-serif;
+    font-weight: 700;
+}
+
 .calculator {
     display: grid; 
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -52,11 +59,8 @@
     transition: 0.1s ease-in;
 }
 
-.button.zero {
-    grid-row-start: 6;
+.button#zero {
     grid-column-start: 1;
-
-    grid-row-end: 7;
     grid-column-end: 3;
     width: initial;
 }

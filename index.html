@@ -13,9 +13,9 @@
             <div id="seen"></div>
             <div id="output"></div>
         </div>
-        <button class="button global">AC</button>
-        <button class="button global">+/-</button>
-        <button class="button global">%</button>
+        <button class="button" id="clear">AC</button>
+        <button class="button" id="sign">+/-</button>
+        <button class="button" id="percentage">%</button>
         <button class="button unit">/</button>
         <button class="button unit">7</button>
         <button class="button unit">8</button>
@@ -29,14 +29,17 @@
         <button class="button unit">2</button>
         <button class="button unit">3</button>
         <button class="button unit">+</button>
-        <button class="button unit zero">0</button>
-        <button class="button">.</button>
+        <button class="button unit" id="zero">0</button>
+        <button class="button unit">.</button>
         <button class="button" id="submit">=</button>
         
         <script src="./script.js"></script>
         <script>
             units.forEach(unit => unit.addEventListener("click", updateExpression));
-            submit.addEventListener("click", () => {seen.textContent = "";});
+            submit.addEventListener("click", evaluateEquals);
+            clear.addEventListener("click", clearScreen);
+            percentage.addEventListener("click", evaluatePercentage);
+            sign.addEventListener("click", changeSign);
             document.body.addEventListener("keydown", keyOperate);
         </script>
     </div>  
