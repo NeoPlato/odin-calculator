@@ -10,28 +10,35 @@
 <body>    
     <div class="calculator">
         <div class="screen">
-            <div class="seen"></div>
-            <div class="input"></div>
+            <div id="seen"></div>
+            <div id="output"></div>
         </div>
         <button class="button global">AC</button>
         <button class="button global">+/-</button>
         <button class="button global">%</button>
-        <button class="button operator">/</button>
-        <button class="button digit">7</button>
-        <button class="button digit">8</button>
-        <button class="button digit">9</button>
-        <button class="button operator">*</button>
-        <button class="button digit">4</button>
-        <button class="button digit">5</button>
-        <button class="button digit">6</button>
-        <button class="button operator">-</button>
-        <button class="button digit">1</button>
-        <button class="button digit">2</button>
-        <button class="button digit">3</button>
-        <button class="button operator">+</button>
-        <button class="button digit zero">0</button>
+        <button class="button unit">/</button>
+        <button class="button unit">7</button>
+        <button class="button unit">8</button>
+        <button class="button unit">9</button>
+        <button class="button unit">*</button>
+        <button class="button unit">4</button>
+        <button class="button unit">5</button>
+        <button class="button unit">6</button>
+        <button class="button unit">-</button>
+        <button class="button unit">1</button>
+        <button class="button unit">2</button>
+        <button class="button unit">3</button>
+        <button class="button unit">+</button>
+        <button class="button unit zero">0</button>
         <button class="button">.</button>
-        <button class="button">=</button>
+        <button class="button" id="submit">=</button>
+        
+        <script src="./script.js"></script>
+        <script>
+            units.forEach(unit => unit.addEventListener("click", updateExpression));
+            submit.addEventListener("click", () => {seen.textContent = "";});
+            document.body.addEventListener("keydown", keyOperate);
+        </script>
     </div>  
 </body>
 </html>

@@ -14,7 +14,7 @@
 .calculator > * {
     border: 1px solid rgb(70, 70, 70);
     border-radius: 10px;
-    font-size: 26px;
+    font-size: 30px;
 }
     
 .screen {
@@ -30,16 +30,26 @@
     justify-content: start;
     gap: 10px;
     padding: 5px;
+    min-height: 65px;
 }
 
-.screen .seen {
+.screen #seen {
     font-size: 18px;
+}
+
+.screen #output {
+    min-height: 30px;
 }
 
 .button {
     background-color: blueviolet;
     width: 85px;
     height: 75px;
+}
+
+.button:active {
+    transform: scale(1.025);
+    transition: 0.1s ease-in;
 }
 
 .button.zero {
