@@ -87,7 +87,6 @@ function keyOperate(event) {
 
 function evaluateEquals() {
     seen.textContent = "";
-    output.textContent = evaluateExpression(expression);
     expression = output.textContent;
 }
 
