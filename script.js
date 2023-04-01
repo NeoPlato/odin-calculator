@@ -13,13 +13,21 @@ let decimal = document.querySelector(".button#decimal");
 function updateExpression() {
     expression += this.textContent;
     seen.textContent = expression;
-    output.textContent = evaluateExpression(expression);
     if (this.textContent === ".") {
         decimal.removeEventListener("click", updateExpression);
     }
     if ("+-/*".includes(this.textContent)) {
         decimal.addEventListener("click", updateExpression);
     }
+    const textOutput = evaluateExpression(expression);
+    if (textOutput === "Zero Division Error") {
+        output.classList.add("zero-division-error");
+        setTimeout(() => {
+            output.classList.remove("zero-division-error");
+            clearScreen()
+        }, 5000)
+    }
+    output.textContent = textOutput;
 }
 
 function evaluateExpression(expr) {

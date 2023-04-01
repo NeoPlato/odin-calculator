@@ -53,6 +53,10 @@ body {
     font-weight: 700;
 }
 
+.screen #output.zero-division-error {
+    font-size: 0.75em;
+}
+
 .button {
     background-color: #bebebe;
     width: 85px;
